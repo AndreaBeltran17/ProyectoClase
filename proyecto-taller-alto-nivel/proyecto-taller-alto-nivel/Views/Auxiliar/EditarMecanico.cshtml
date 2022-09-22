@@ -1,0 +1,65 @@
+﻿@model MecanicoModel
+
+@{
+    ViewData["Title"] = "Nuevo Mecanico";
+    Layout = "~/Views/Shared/auxiliar/_Layout.cshtml";
+}
+
+
+<div class="containerVehiculo">
+
+    <div class="containerTitleVehiculo">
+        <p>Guardar Mecánico</p>
+    </div>
+
+    <form class="formVehiculo" asp-action="EditarMecanico" asp-controller="Auxiliar" method="post">
+        <div class="containerInputsMecanico">
+
+            <div class="containerChildInputsMecanico">
+                <input asp-for="id_Persona"  hidden/> 
+
+                <label>Nombre</label>
+                <input asp-for="Nombre" />
+                <span asp-validation-for="Nombre" style="color:red"></span>
+
+                <label>Apellido</label>
+                <input asp-for="Apellido" />
+                <span asp-validation-for="Apellido" style="color:red"></span>
+
+                <label>Identificacion</label>
+                <input asp-for="Identificacion" />
+                <span asp-validation-for="Identificacion" style="color:red"></span>
+
+            </div>
+
+            <div class="containerChildInputsMecanico">
+
+                <label>Nacimiento</label>
+                <input asp-for="Nacimiento" />
+                <span asp-validation-for="Nacimiento" style="color:red"></span>
+
+                <label>Dirección</label>
+                <input asp-for="Direccion" />
+                <span asp-validation-for="Direccion" style="color:red"></span>
+            </div>
+
+            <div class="containerChildInputsMecanico">
+
+                <label>Nivel Educacion</label>
+                <input asp-for="NivelEducacion" />
+                <span asp-validation-for="NivelEducacion" style="color:red"></span>
+
+                <label>Telefono</label>
+                <input asp-for="Telefono" />
+                <span asp-validation-for="Telefono" style="color:red"></span>
+            </div>
+
+        </div>
+
+        <div class="containerBtnForm">
+            <button class="btnGuardarMecanico" type="submit">Finalizar</button>
+        </div>
+
+    </form>
+
+</div>

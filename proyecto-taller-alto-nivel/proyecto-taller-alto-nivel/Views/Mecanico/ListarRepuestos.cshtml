@@ -1,0 +1,59 @@
+﻿@model List<RepuestosModel>
+
+@{
+    ViewData["Title"] = "ListarServicio";
+    Layout = "~/Views/Shared/mecanico/_Layout.cshtml";
+}
+<div class="containerMainLista">
+
+    <div class="TituloListarServicios">
+        <h2>HISTORICO DE REPUESTOS</h2>
+    </div>
+
+    <div class="card-body containerTable">
+
+        <table class="listaVehiculos2" id="tableId">
+
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="result">
+                        <td>@item.Marca</td>
+                        <td>@item.Tipo</td>
+
+                        <td><a class="btnEditServicioMecanico" asp-action="EditarRepuesto" asp-controller="Mecanico" asp-route-Repuesto="@item.id_Partes">Editar</a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <br />
+        <a class="btnEditServicioMecanico" asp-action="ListaServiciosMecanico" asp-controller="Mecanico">Volver</a>
+        <span id="message" class="message"></span>
+    </div>
+
+    <script>
+
+
+        const tableResult = document.getElementById('tableId');
+        const msg = document.getElementById('message');
+        if (tableResult.rows.length <= 1) {
+            msg.innerHTML = "No hay Ningun Servicio";
+
+            alert('No hay Servicios')
+        }
+
+    </script>
+
+
+</div>
+

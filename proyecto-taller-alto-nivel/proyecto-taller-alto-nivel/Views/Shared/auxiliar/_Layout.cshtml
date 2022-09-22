@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - proyecto_taller_alto_nivel</title>
+    <link rel="stylesheet" href="~/css/auxiliar/estilos.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/crearMecanico.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/crearVehiculo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/EditarVehiculo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/crearPropietario.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/ListarVehiculos.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auxiliar/crearSoat.css" asp-append-version="true" />  
+
+
+</head>
+<body>
+   <div class="header-auxiliar">
+        <div>
+            <img src="../img/auxiliar/logo.png" class="imgLogo" />
+        </div> 
+            <a asp-action="Index" asp-controller="Home" as class="btnClose">Cerrar Sesion</a>
+    </div>
+
+    <div class="container-main">
+        <div class="menu-lateral">
+
+            <div class="containerUserInfo">
+                <div>
+                   <h2><img src="../img/auxiliar/userIcon.png" class="imgUser" /> <span id="userId"></span></h2>
+                    <p>Perfil: ADMINISTRADOR</p>
+                    <p>Fecha actual: <span id="actualDate"></span></p>
+                    <p>Ultimo ingreso:<span id="lastDate"></span></p>
+                </div>
+            </div>
+
+            <div class="containerMenu">
+                
+              <!-- <div class="singleMenu">
+                    <div class="menuTitle">Nuevo</div>
+                    <ul>
+                        <li><a asp-action="GuardarMecanico" asp-controller="Auxiliar">Mecanico</a></li>
+                        <li><a asp-action="GuardarVehiculo" asp-controller="Auxiliar">Vehiculo</a></li>
+                        <li><a asp-action="GuardarPropietario" asp-controller="Auxiliar">Propietario</a></li>
+                    </ul>
+                </div>
+
+              -->
+
+                <ul class="singleMenu">
+                    <input type="checkbox" id="collapse"  class="inputCollap"/>
+                    <label for="collapse" class="labelCollap">Nuevo</label>
+                    <li><a asp-action="GuardarMecanico" asp-controller="Auxiliar">Mecanico</a></li>
+                    <li><a asp-action="GuardarVehiculo" asp-controller="Auxiliar">Vehiculo</a></li>
+                    <li><a asp-action="GuardarPropietario" asp-controller="Auxiliar">Propietario</a></li>
+                    <li><a asp-action="GuardarSoat" asp-controller="Auxiliar">Soat</a></li>
+                    <li><a asp-action="GuardarServicio" asp-controller="Auxiliar">Servicio</a></li>
+                </ul>
+
+                <ul class="singleMenu">
+                    <input type="checkbox" id="collapse2" class="inputCollap" />
+                    <label for="collapse2" class="labelCollap">Buscar</label>
+                    <li><a asp-action="BuscarIdMecanico" asp-controller="Auxiliar">Mecanico</a></li>
+                    <li><a asp-action="ObtenerPlaca" asp-controller="Auxiliar">Vehiculo</a></li>                    
+                    <li><a asp-action="BuscarPropietario" asp-controller="Auxiliar">Propietario</a></li>
+                    <li><a asp-action="ObtenerPlacaServicio" asp-controller="Auxiliar">Servicio</a></li>
+                </ul>
+
+                <ul class="singleMenu">
+                    <input type="checkbox" id="collapse3" class="inputCollap" />
+                    <label for="collapse3" class="labelCollap">Gestion De</label>
+                    <li><a asp-action="ListarServicios" asp-controller="Auxiliar">Lista Servicios</a></li>
+                    <li><a asp-action="ListarMecanico" asp-controller="Auxiliar">Lista Mecanicos</a></li>
+                    <li><a asp-action="ListarVehiculo" asp-controller="Auxiliar">Lista Vehiculos</a></li>
+                    <li><a asp-action="ListarPropietario" asp-controller="Auxiliar">Lista Propietario</a></li>
+                   
+                </ul>
+                
+            </div>
+
+        </div>
+
+        <div class="contenedor">
+            @RenderBody()
+         </div>
+    </div>
+
+    <div class="footer">
+        <span><img src="../img/auxiliar/Icon_cel.png" class="imgContacto" />32019310</span>
+        <span><img src="../img/auxiliar/icon_ubicacion.png" class="imgContacto" />Costa de marfil</span>
+    </div>
+
+
+    <script>
+        let today = new Date();
+        let current = document.getElementById('actualDate');
+        let userName = document.getElementById('userId');
+        let last = document.getElementById('lastDate');
+
+        current.innerHTML = today;
+        last.innerHTML = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
+        let users=['NATALIA MEZA','EDWIN OLAYA','SANTIAGO GOD','DANIELITO','Elliot Alderson'];
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+        userName.innerHTML = users[getRandomInt(0, 4)];
+
+        console.log(users[getRandomInt(0, 5)])
+
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

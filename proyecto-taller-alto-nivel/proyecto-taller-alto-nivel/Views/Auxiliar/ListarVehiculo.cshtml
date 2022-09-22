@@ -1,0 +1,49 @@
+﻿@model List<VehiculoModel>
+@{
+    ViewData["Title"] = "ListarVehiculo";
+    Layout = "~/Views/Shared/auxiliar/_Layout.cshtml";
+}                                     
+<div class="containerMainLista">
+ 
+    <div class="TituloListarVehiculos">
+        <h2>LISTADO GENERAL DE VEHICULOS</h2>
+    </div>
+        
+        <div class="card-body containerTable">
+        
+                <table class="listaVehiculos2">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Placa</th>
+                            <th>Tipo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Capacidad</th>
+                            <th>Propietario</th>
+                            <th>Revision</th>
+                            <th>Detalle</th>
+                         </tr>
+                    </thead>
+   
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.id_Vehiculo</td>
+                                <td>@item.Licencia</td>
+                                <td>@item.Tipo</td>
+                                <td>@item.Marca</td>
+                                <td>@item.Modelo</td>
+                                <td>@item.Capacidad</td>
+                                <td>@item.id_Propietario</td>
+                                <td>Jorge Rodriguez</td>
+                                <td><a asp-action="ObtenerVehiculo" asp-controller="Auxiliar" class="btnEditarVehiculo" asp-route-Licencia="@item.Licencia">Ver</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        <a asp-action="GuardarVehiculo" asp-controller="Auxiliar" class="btnCrearNuevo">CREAR NUEVO</a>
+        </div>      
+</div>
+
